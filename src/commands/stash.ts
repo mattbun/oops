@@ -9,6 +9,8 @@ import { StashFile } from '../lib/database';
 export default class Stash extends Command {
   static description = 'stash files'
 
+  static aliases = ['']
+
   static flags = {
     ...Command.flags,
     name: flags.string({char: 'n', description: 'name for the stash'}),
