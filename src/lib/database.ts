@@ -8,7 +8,8 @@ interface DatabaseStructure {
   stashes: Array<Stash>;
 }
 
-interface StashInput {
+export interface StashInput {
+  id?: string;
   files: Array<StashFile>;
 }
 
@@ -32,9 +33,13 @@ export class Database {
     this.db.defaults({ stashes: [] }).write();
   }
 
+  createId() {
+    return nanoid()
+  }
+
   addStash(stash: StashInput) {
     this.db.get('stashes').push({
-      id: nanoid(),
+      id: stash.id ?? nanoid(),
       createdDate: (new Date()).toISOString(),
       ...stash,
     }).write();

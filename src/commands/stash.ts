@@ -3,7 +3,7 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import cli from 'cli-ux';
 
-import { Database, StashFile } from '../lib/database';
+import { Database, StashFile, StashInput } from '../lib/database';
 import { stashesDirectory } from '../lib/config';
 
 export default class Stash extends Command {
@@ -24,16 +24,18 @@ export default class Stash extends Command {
     const {argv, flags} = this.parse(Stash)
 
     const db = new Database();
+    const id = db.createId();
     const files: Array<StashFile> = [];
 
-    fs.mkdirSync(stashesDirectory, { recursive: true });
+    const destinationDirectory = path.join(stashesDirectory, id);
+    fs.mkdirSync(destinationDirectory, { recursive: true });
     argv.forEach(file => {
       cli.action.start(file);
 
       const absolutePath = path.resolve(file);
       const filename = path.basename(file);
 
-      fs.copySync(absolutePath, path.join(stashesDirectory, filename));
+      fs.copySync(absolutePath, path.join(destinationDirectory, filename));
       files.push({
         filename,
         absolutePath,
@@ -43,6 +45,7 @@ export default class Stash extends Command {
     });
 
     db.addStash({
+      id,
       files,
     })
   }
