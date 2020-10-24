@@ -21,6 +21,7 @@ export default class Stash extends Command {
   }
 
   static args = [{name: 'file'}]
+  static strict = false;
 
   async run() {
     const {argv, flags} = this.parse(Stash)
