@@ -30,7 +30,7 @@ export default class Drop extends Command {
     stashesToDrop.forEach((stash: Stash) => {
       cli.action.start(`Dropping ${stash.name ?? stash.id}`);
 
-      fs.removeSync(path.join(this.stashesDirectory, stash.id))
+      fs.removeSync(path.join(this.config.dataDir, stash.id))
       this.db.deleteStash(stash.id)
 
       cli.action.stop();

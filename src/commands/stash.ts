@@ -23,7 +23,7 @@ export default class Stash extends Command {
     const id = this.db.createId();
     const files: Array<StashFile> = [];
 
-    const destinationDirectory = path.join(this.stashesDirectory, id);
+    const destinationDirectory = path.join(this.config.dataDir, id);
     fs.mkdirSync(destinationDirectory, { recursive: true });
     argv.forEach(file => {
       cli.action.start(file);
