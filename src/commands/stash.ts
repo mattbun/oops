@@ -11,10 +11,7 @@ export default class Stash extends Command {
 
   static flags = {
     help: flags.help({char: 'h'}),
-    // flag with a value (-n, --name=VALUE)
-    name: flags.string({char: 'n', description: 'name to print'}),
-    // flag with no value (-f, --force)
-    force: flags.boolean({char: 'f'}),
+    name: flags.string({char: 'n', description: 'name for the stash'}),
   }
 
   static args = [{name: 'file'}]
@@ -46,6 +43,7 @@ export default class Stash extends Command {
 
     db.addStash({
       id,
+      name: flags.name,
       files,
     })
   }

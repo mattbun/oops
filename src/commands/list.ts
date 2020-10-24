@@ -14,7 +14,9 @@ export default class List extends Command {
   async run() {
     const db = new Database()
     cli.table(db.getStashes(), {
-      id: {},
+      name: {
+        get: row => row.name ?? row.id,
+      },
       createdDate: {
         header: 'Date',
         get: row => (new Date(row.createdDate)).toLocaleString(),

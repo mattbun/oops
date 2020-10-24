@@ -24,7 +24,7 @@ export default class Drop extends Command {
     const db = new Database()
     const stashes = db.getStashes()
     const choices = stashes.map(stash => ({
-      name: (new Date(stash.createdDate)).toLocaleString(),
+      name: `${stash.name ?? stash.id} (${(new Date(stash.createdDate)).toLocaleString()})`,
       value: stash,
     }))
 
@@ -35,7 +35,7 @@ export default class Drop extends Command {
     }])
 
     stashesToDrop.forEach((stash: Stash) => {
-      cli.action.start(stash.id); // TODO print something nicer here
+      cli.action.start(`Dropping ${stash.name ?? stash.id}`);
       fs.removeSync(path.join(stashesDirectory, stash.id))
       db.deleteStash(stash.id)
       cli.action.stop();
