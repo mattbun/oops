@@ -29,10 +29,10 @@ USAGE
 # Commands
 <!-- commands -->
 * [`oops autocomplete [SHELL]`](#oops-autocomplete-shell)
-* [`oops drop [FILE]`](#oops-drop-file)
-* [`oops hello [FILE]`](#oops-hello-file)
+* [`oops drop`](#oops-drop)
 * [`oops help [COMMAND]`](#oops-help-command)
 * [`oops list`](#oops-list)
+* [`oops restore`](#oops-restore)
 * [`oops stash [FILE]`](#oops-stash-file)
 
 ## `oops autocomplete [SHELL]`
@@ -58,41 +58,19 @@ EXAMPLES
 
 _See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.2.0/src/commands/autocomplete/index.ts)_
 
-## `oops drop [FILE]`
+## `oops drop`
 
-describe the command here
+delete stashes
 
 ```
 USAGE
-  $ oops drop [FILE]
+  $ oops drop
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/drop.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/drop.ts)_
-
-## `oops hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ oops hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ oops hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/hello.ts)_
 
 ## `oops help [COMMAND]`
 
@@ -113,7 +91,7 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0
 
 ## `oops list`
 
-describe the command here
+list stashes
 
 ```
 USAGE
@@ -133,6 +111,21 @@ OPTIONS
 
 _See code: [src/commands/list.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/list.ts)_
 
+## `oops restore`
+
+restore stashes
+
+```
+USAGE
+  $ oops restore
+
+OPTIONS
+  -f, --force  overwrite if it already exists
+  -h, --help   show CLI help
+```
+
+_See code: [src/commands/restore.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/restore.ts)_
+
 ## `oops stash [FILE]`
 
 stash files
@@ -142,9 +135,11 @@ USAGE
   $ oops stash [FILE]
 
 OPTIONS
-  -f, --force
   -h, --help       show CLI help
-  -n, --name=name  name to print
+  -n, --name=name  name for the stash
+
+ALIASES
+  $ oops
 ```
 
 _See code: [src/commands/stash.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/stash.ts)_
