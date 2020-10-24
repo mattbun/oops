@@ -2,6 +2,7 @@ import {Command, flags} from '@oclif/command'
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
+import cli from 'cli-ux';
 
 // TODO this could be nicer
 import { Database, StashFile } from '../lib/database';
@@ -31,17 +32,18 @@ export default class Stash extends Command {
 
     fs.mkdirSync(destinationPath, { recursive: true });
     argv.forEach(file => {
+      cli.action.start(file);
+
       const absolutePath = path.resolve(file);
       const filename = path.basename(file);
 
       fs.copyFileSync(absolutePath, path.join(destinationPath, filename));
-
-      // TODO fancier terminal output
-      console.log(file);
       files.push({
         filename,
         absolutePath,
       });
+
+      cli.action.stop();
     });
 
     db.addStash({
