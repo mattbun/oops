@@ -30,6 +30,7 @@ USAGE
 <!-- commands -->
 * [`oops hello [FILE]`](#oops-hello-file)
 * [`oops help [COMMAND]`](#oops-help-command)
+* [`oops list [FILE]`](#oops-list-file)
 * [`oops stash [FILE]`](#oops-stash-file)
 
 ## `oops hello [FILE]`
@@ -69,9 +70,25 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
-## `oops stash [FILE]`
+## `oops list [FILE]`
 
 describe the command here
+
+```
+USAGE
+  $ oops list [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/list.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/list.ts)_
+
+## `oops stash [FILE]`
+
+stash files
 
 ```
 USAGE

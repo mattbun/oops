@@ -41,4 +41,9 @@ export class Database {
       ...stash,
     }).write();
   }
+
+  getStashes() {
+    return this.db.get('stashes')
+      .value();
+  }
 }
