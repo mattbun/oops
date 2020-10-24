@@ -2,7 +2,7 @@ import Command from '../base'
 import { cli } from 'cli-ux'
 
 export default class List extends Command {
-  static description = 'describe the command here'
+  static description = 'list stashes'
 
   static flags = {
     ...Command.flags,

@@ -7,7 +7,7 @@ import cli from 'cli-ux';
 import { Stash } from '../lib/database'
 
 export default class Drop extends Command {
-  static description = 'describe the command here'
+  static description = 'delete stashes'
 
   static flags = {
     ...Command.flags
@@ -23,6 +23,7 @@ export default class Drop extends Command {
     const { stashesToDrop } = await inquirer.prompt([{
       type: 'checkbox',
       name: 'stashesToDrop',
+      message: 'Which stash(es) would you like to drop?',
       choices,
     }])
 
