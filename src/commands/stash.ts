@@ -9,8 +9,6 @@ import { Database, StashFile } from '../lib/database';
 // TODO put somewhere more central
 const destinationPath = path.join(os.homedir(), '.oops', 'stashes');
 
-console.log(destinationPath);
-
 export default class Stash extends Command {
   static description = 'stash files'
 
