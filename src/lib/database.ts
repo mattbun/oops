@@ -20,7 +20,8 @@ export interface Stash {
 
 export interface StashFile {
   filename: string;
-  absolutePath: string;
+  originalAbsolutePath: string;
+  stashedRelativePath: string;
 }
 
 export class Database {

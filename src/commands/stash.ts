@@ -34,7 +34,8 @@ export default class Stash extends Command {
       fs.copySync(absolutePath, path.join(destinationDirectory, filename));
       files.push({
         filename,
-        absolutePath,
+        originalAbsolutePath: absolutePath,
+        stashedRelativePath: filename,
       });
 
       cli.action.stop();
