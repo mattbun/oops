@@ -1,16 +1,16 @@
-import {Command, flags} from '@oclif/command'
+import Command from '../base'
+import { flags } from '@oclif/command'
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import cli from 'cli-ux';
 
-import { Database, StashFile, StashInput } from '../lib/database';
-import { stashesDirectory } from '../lib/config';
+import { StashFile } from '../lib/database';
 
 export default class Stash extends Command {
   static description = 'stash files'
 
   static flags = {
-    help: flags.help({char: 'h'}),
+    ...Command.flags,
     name: flags.string({char: 'n', description: 'name for the stash'}),
   }
 
@@ -20,11 +20,10 @@ export default class Stash extends Command {
   async run() {
     const {argv, flags} = this.parse(Stash)
 
-    const db = new Database();
-    const id = db.createId();
+    const id = this.db.createId();
     const files: Array<StashFile> = [];
 
-    const destinationDirectory = path.join(stashesDirectory, id);
+    const destinationDirectory = path.join(this.stashesDirectory, id);
     fs.mkdirSync(destinationDirectory, { recursive: true });
     argv.forEach(file => {
       cli.action.start(file);
@@ -41,7 +40,7 @@ export default class Stash extends Command {
       cli.action.stop();
     });
 
-    db.addStash({
+    this.db.addStash({
       id,
       name: flags.name,
       files,

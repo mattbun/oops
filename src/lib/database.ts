@@ -1,8 +1,5 @@
 import * as lowdb from 'lowdb';
-import * as FileSync from 'lowdb/adapters/FileSync';
 import { nanoid } from 'nanoid';
-
-import { dbLocation } from './config';
 
 interface DatabaseStructure {
   stashes: Array<Stash>;
@@ -30,7 +27,7 @@ export class Database {
 
   db: lowdb.LowdbSync<DatabaseStructure>;
 
-  constructor(adapter: lowdb.AdapterSync = new FileSync(dbLocation)) {
+  constructor(adapter: lowdb.AdapterSync) {
     this.db = lowdb(adapter);
     this.db.defaults({ stashes: [] }).write();
   }

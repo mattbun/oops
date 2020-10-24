@@ -1,19 +1,16 @@
-import {Command, flags} from '@oclif/command'
+import Command from '../base'
 import { cli } from 'cli-ux'
-
-import { Database } from '../lib/database'
 
 export default class List extends Command {
   static description = 'describe the command here'
 
   static flags = {
-    help: flags.help({char: 'h'}),
+    ...Command.flags,
     ...cli.table.flags(),
   }
 
   async run() {
-    const db = new Database()
-    cli.table(db.getStashes(), {
+    cli.table(this.db.getStashes(), {
       name: {
         get: row => row.name ?? row.id,
       },
