@@ -1,14 +1,10 @@
 import {Command, flags} from '@oclif/command'
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as os from 'os';
 import cli from 'cli-ux';
 
-// TODO this could be nicer
 import { Database, StashFile } from '../lib/database';
-
-// TODO put somewhere more central
-const destinationPath = path.join(os.homedir(), '.oops', 'stashes');
+import { stashesDirectory } from '../lib/config';
 
 export default class Stash extends Command {
   static description = 'stash files'
@@ -30,14 +26,14 @@ export default class Stash extends Command {
     const db = new Database();
     const files: Array<StashFile> = [];
 
-    fs.mkdirSync(destinationPath, { recursive: true });
+    fs.mkdirSync(stashesDirectory, { recursive: true });
     argv.forEach(file => {
       cli.action.start(file);
 
       const absolutePath = path.resolve(file);
       const filename = path.basename(file);
 
-      fs.copySync(absolutePath, path.join(destinationPath, filename));
+      fs.copySync(absolutePath, path.join(stashesDirectory, filename));
       files.push({
         filename,
         absolutePath,
