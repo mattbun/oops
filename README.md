@@ -28,10 +28,51 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`oops autocomplete [SHELL]`](#oops-autocomplete-shell)
+* [`oops drop [FILE]`](#oops-drop-file)
 * [`oops hello [FILE]`](#oops-hello-file)
 * [`oops help [COMMAND]`](#oops-help-command)
-* [`oops list [FILE]`](#oops-list-file)
+* [`oops list`](#oops-list)
 * [`oops stash [FILE]`](#oops-stash-file)
+
+## `oops autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ oops autocomplete [SHELL]
+
+ARGUMENTS
+  SHELL  shell type
+
+OPTIONS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+EXAMPLES
+  $ oops autocomplete
+  $ oops autocomplete bash
+  $ oops autocomplete zsh
+  $ oops autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.2.0/src/commands/autocomplete/index.ts)_
+
+## `oops drop [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ oops drop [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/drop.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/drop.ts)_
 
 ## `oops hello [FILE]`
 
@@ -70,18 +111,24 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.0/src/commands/help.ts)_
 
-## `oops list [FILE]`
+## `oops list`
 
 describe the command here
 
 ```
 USAGE
-  $ oops list [FILE]
+  $ oops list
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help              show CLI help
+  -x, --extended          show extra columns
+  --columns=columns       only show provided columns (comma-separated)
+  --csv                   output is csv format [alias: --output=csv]
+  --filter=filter         filter property by partial string matching, ex: name=foo
+  --no-header             hide table header from output
+  --no-truncate           do not truncate output to fit screen
+  --output=csv|json|yaml  output in a more machine friendly format
+  --sort=sort             property to sort by (prepend '-' for descending)
 ```
 
 _See code: [src/commands/list.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/list.ts)_

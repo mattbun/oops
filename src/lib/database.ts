@@ -13,7 +13,7 @@ export interface StashInput {
   files: Array<StashFile>;
 }
 
-interface Stash {
+export interface Stash {
   id: string;
   createdDate: string;
   files: Array<StashFile>;
@@ -48,5 +48,17 @@ export class Database {
   getStashes() {
     return this.db.get('stashes')
       .value();
+  }
+
+  deleteStashes(ids: Array<string>) {
+    this.db.get('stashes')
+      .remove(stash => ids.includes(stash.id))
+      .write();
+  }
+
+  deleteStash(id: string) {
+    this.db.get('stashes')
+      .remove({ id })
+      .write()
   }
 }
