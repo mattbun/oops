@@ -3,7 +3,7 @@ import { flags } from '@oclif/command'
 import * as inquirer from 'inquirer'
 import * as fs from 'fs-extra'
 import * as path from 'path'
-import cli from 'cli-ux';
+import cli from 'cli-ux'
 
 import { Stash } from '../lib/types'
 import { getName, getDate } from '../lib/format'
@@ -36,24 +36,24 @@ export default class Restore extends Command {
     }])
 
     stashesToRestore.forEach((stash: Stash) => {
-      console.log(`Restoring "${getName(stash)}"...`);
+      console.log(`Restoring "${getName(stash)}"...`)
 
       // Check if any of the files exist before copying
       if (!force) {
         stash.files.forEach(file => {
           if (fs.existsSync(file.originalAbsolutePath)) {
-            throw new Error(`Path already exists, run with '-f' to overwrite: ${file.originalAbsolutePath}`);
+            throw new Error(`Path already exists, run with '-f' to overwrite: ${file.originalAbsolutePath}`)
           }
         })
       }
 
       stash.files.forEach(file => {
-        cli.action.start(`\t${file.filename}`);
+        cli.action.start(`\t${file.filename}`)
 
-        const sourceLocation = path.join(this.config.dataDir, stash.id, file.stashedRelativePath);
-        fs.copySync(sourceLocation, file.originalAbsolutePath);
+        const sourceLocation = path.join(this.config.dataDir, stash.id, file.stashedRelativePath)
+        fs.copySync(sourceLocation, file.originalAbsolutePath)
 
-        cli.action.stop();
+        cli.action.stop()
       })
     })
   }

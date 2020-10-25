@@ -2,16 +2,16 @@ import Command from '../base'
 import * as inquirer from 'inquirer'
 import * as fs from 'fs-extra'
 import * as path from 'path'
-import cli from 'cli-ux';
+import cli from 'cli-ux'
 
 import { Stash } from '../lib/types'
-import { getName, getDate } from '../lib/format';
+import { getName, getDate } from '../lib/format'
 
 export default class Drop extends Command {
   static description = 'delete stashes'
 
   static flags = {
-    ...Command.flags
+    ...Command.flags,
   }
 
   async run() {
@@ -29,12 +29,12 @@ export default class Drop extends Command {
     }])
 
     stashesToDrop.forEach((stash: Stash) => {
-      cli.action.start(`Dropping ${getName(stash)}`);
+      cli.action.start(`Dropping ${getName(stash)}`)
 
       fs.removeSync(path.join(this.config.dataDir, stash.id))
       this.db.deleteStash(stash.id)
 
-      cli.action.stop();
+      cli.action.stop()
     })
   }
 }

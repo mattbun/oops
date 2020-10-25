@@ -1,19 +1,18 @@
-import * as lowdb from 'lowdb';
-import { nanoid } from 'nanoid';
+import * as lowdb from 'lowdb'
+import { nanoid } from 'nanoid'
 
-import { Stash, StashFile } from './types';
+import { Stash, StashFile } from './types'
 
 interface DatabaseStructure {
   stashes: Array<Stash>;
 }
 
 export default class Database {
-
-  db: lowdb.LowdbSync<DatabaseStructure>;
+  db: lowdb.LowdbSync<DatabaseStructure>
 
   constructor(adapter: lowdb.AdapterSync) {
-    this.db = lowdb(adapter);
-    this.db.defaults({ stashes: [] }).write();
+    this.db = lowdb(adapter)
+    this.db.defaults({ stashes: [] }).write()
   }
 
   createId() {
@@ -28,12 +27,12 @@ export default class Database {
     this.db.get('stashes').push({
       ...stash,
       createdDate: (new Date()).toISOString(),
-    }).write();
+    }).write()
   }
 
   getStashes() {
     return this.db.get('stashes')
-      .value();
+      .value()
   }
 
   deleteStash(id: string) {

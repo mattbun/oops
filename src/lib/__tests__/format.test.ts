@@ -7,17 +7,17 @@ describe('format', () => {
       const stash = {
         id: 'some id',
         name: 'some name',
-      } as unknown as Stash;
+      } as unknown as Stash
 
-      expect(getName(stash)).toStrictEqual('some name');
+      expect(getName(stash)).toStrictEqual('some name')
     })
 
     it('returns the id if the stash has no name', () => {
       const stash = {
         id: 'some id',
-      } as unknown as Stash;
+      } as unknown as Stash
 
-      expect(getName(stash)).toStrictEqual('some id');
+      expect(getName(stash)).toStrictEqual('some id')
     })
   })
 

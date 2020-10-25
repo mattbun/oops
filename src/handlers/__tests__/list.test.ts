@@ -1,8 +1,8 @@
-import listHandler from "../list"
+import listHandler from '../list'
 
 describe('listHandler', () => {
   it('prints a list', () => {
-    const mockStashes = [{ id: 'some id' }];
+    const mockStashes = [{ id: 'some id' }]
     const dependencies = {
       cli: {
         table: jest.fn(),
@@ -17,9 +17,9 @@ describe('listHandler', () => {
       },
     } as any
 
-    listHandler(dependencies, parseOutput);
+    listHandler(dependencies, parseOutput)
 
-    expect(dependencies.db.getStashes).toHaveBeenCalledTimes(1);
+    expect(dependencies.db.getStashes).toHaveBeenCalledTimes(1)
     expect(dependencies.cli.table).toHaveBeenCalledWith(
       mockStashes,
       {

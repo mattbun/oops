@@ -5,5 +5,5 @@ export function getName(stash: Stash) {
 }
 
 export function getDate(stash: Stash) {
-  return (new Date(stash.createdDate)).toLocaleString();
+  return (new Date(stash.createdDate)).toLocaleString()
 }
