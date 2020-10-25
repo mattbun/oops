@@ -16,22 +16,5 @@ export default class List extends Command {
       cli,
       db: this.db,
     }, this.parse(List))
-
-   /*
-    cli.table(this.db.getStashes(), {
-      name: {
-        get: row => row.name ?? row.id,
-      },
-      createdDate: {
-        header: 'Date',
-        get: row => (new Date(row.createdDate)).toLocaleString(),
-      },
-      contents: {
-        get: row => row.files.map(e => e.filename).join('\n'),
-      },
-    }, {
-      ...flags
-    })
-    */
   }
 }
