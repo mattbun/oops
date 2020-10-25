@@ -4,9 +4,9 @@ oops
 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oops.svg)](https://npmjs.org/package/oops-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/oops.svg)](https://npmjs.org/package/oops-cli)
-[![License](https://img.shields.io/npm/l/oops.svg)](https://github.com/mattbun/oops/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@mattbun/oops.svg)](https://npmjs.org/package/@mattbun/oops)
+[![Downloads/week](https://img.shields.io/npm/dw/@mattbun/oops.svg)](https://npmjs.org/package/@mattbun/oops)
+[![License](https://img.shields.io/npm/l/@mattbun/oops.svg)](https://github.com/mattbun/oops/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
