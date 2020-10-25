@@ -15,11 +15,11 @@ oops
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g oops-cli
+$ npm install -g @mattbun/oops
 $ oops COMMAND
 running command...
 $ oops (-v|--version|version)
-oops-cli/0.0.0 linux-x64 node-v14.4.0
+@mattbun/oops/0.0.0 linux-x64 node-v14.4.0
 $ oops --help [COMMAND]
 USAGE
   $ oops COMMAND

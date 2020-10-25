@@ -1,5 +1,5 @@
 {
-  "name": "oops-cli",
+  "name": "@mattbun/oops",
   "version": "0.0.0",
   "author": "Matt Rathbun @mattbun",
   "bin": {
