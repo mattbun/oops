@@ -1,27 +1,10 @@
 import * as lowdb from 'lowdb';
 import { nanoid } from 'nanoid';
 
+import { Stash, StashFile } from './types';
+
 interface DatabaseStructure {
   stashes: Array<Stash>;
-}
-
-export interface StashInput {
-  id?: string;
-  name?: string;
-  files: Array<StashFile>;
-}
-
-export interface Stash {
-  id: string;
-  name?: string;
-  createdDate: string;
-  files: Array<StashFile>;
-}
-
-export interface StashFile {
-  filename: string;
-  originalAbsolutePath: string;
-  stashedRelativePath: string;
 }
 
 export class Database {
@@ -37,7 +20,11 @@ export class Database {
     return nanoid()
   }
 
-  addStash(stash: StashInput) {
+  addStash(stash: {
+    id?: string;
+    name?: string;
+    files: Array<StashFile>;
+  }) {
     this.db.get('stashes').push({
       id: stash.id ?? nanoid(),
       createdDate: (new Date()).toISOString(),

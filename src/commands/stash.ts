@@ -4,7 +4,7 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import cli from 'cli-ux';
 
-import { StashFile } from '../lib/database';
+import { StashFile } from '../lib/types';
 
 export default class Stash extends Command {
   static description = 'stash files'

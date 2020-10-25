@@ -4,7 +4,7 @@ import * as fs from 'fs-extra'
 import * as path from 'path'
 import cli from 'cli-ux';
 
-import { Stash } from '../lib/database'
+import { Stash } from '../lib/types'
 
 export default class Drop extends Command {
   static description = 'delete stashes'
