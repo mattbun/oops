@@ -7,7 +7,7 @@ interface DatabaseStructure {
   stashes: Array<Stash>;
 }
 
-export class Database {
+export default class Database {
 
   db: lowdb.LowdbSync<DatabaseStructure>;
 

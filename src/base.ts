@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as FileSync from 'lowdb/adapters/FileSync';
 
-import { Database } from './lib/database';
+import Database from './lib/database';
 
 const DB_FILE_NAME = 'db.json';
 
