@@ -10,5 +10,6 @@ type Flags<T> = Options<T>['flags']
 
 export interface ParserOutput<T> {
   args: Args;
+  argv: Array<string>;
   flags: Flags<T>;
 }

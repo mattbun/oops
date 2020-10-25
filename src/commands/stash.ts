@@ -1,10 +1,9 @@
 import Command from '../base'
 import { flags } from '@oclif/command'
 import * as fs from 'fs-extra'
-import * as path from 'path'
 import cli from 'cli-ux'
 
-import { StashFile } from '../lib/types'
+import stashHandler from '../handlers/stash'
 
 export default class Stash extends Command {
   static description = 'stash files'
@@ -21,33 +20,10 @@ export default class Stash extends Command {
   static strict = false
 
   async run() {
-    const { argv, flags } = this.parse(Stash)
-
-    const id = this.db.createId()
-    const files: Array<StashFile> = []
-
-    const destinationDirectory = path.join(this.config.dataDir, id)
-    fs.mkdirSync(destinationDirectory, { recursive: true })
-    argv.forEach(file => {
-      cli.action.start(file)
-
-      const absolutePath = path.resolve(file)
-      const filename = path.basename(file)
-
-      fs.copySync(absolutePath, path.join(destinationDirectory, filename))
-      files.push({
-        filename,
-        originalAbsolutePath: absolutePath,
-        stashedRelativePath: filename,
-      })
-
-      cli.action.stop()
-    })
-
-    this.db.addStash({
-      id,
-      name: flags.name,
-      files,
-    })
+    stashHandler({
+      config: this.config,
+      cli,
+      db: this.db,
+    }, this.parse(Stash))
   }
 }
