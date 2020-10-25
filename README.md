@@ -4,8 +4,8 @@ oops
 
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oops.svg)](https://npmjs.org/package/oops)
-[![Downloads/week](https://img.shields.io/npm/dw/oops.svg)](https://npmjs.org/package/oops)
+[![Version](https://img.shields.io/npm/v/oops.svg)](https://npmjs.org/package/oops-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/oops.svg)](https://npmjs.org/package/oops-cli)
 [![License](https://img.shields.io/npm/l/oops.svg)](https://github.com/mattbun/oops/blob/master/package.json)
 
 <!-- toc -->
@@ -15,11 +15,11 @@ oops
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g oops
+$ npm install -g oops-cli
 $ oops COMMAND
 running command...
 $ oops (-v|--version|version)
-oops/0.0.0 linux-x64 node-v14.4.0
+oops-cli/0.0.0 linux-x64 node-v14.4.0
 $ oops --help [COMMAND]
 USAGE
   $ oops COMMAND
