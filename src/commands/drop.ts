@@ -5,6 +5,7 @@ import * as path from 'path'
 import cli from 'cli-ux';
 
 import { Stash } from '../lib/types'
+import { getName, getDate } from '../lib/format';
 
 export default class Drop extends Command {
   static description = 'delete stashes'
@@ -16,7 +17,7 @@ export default class Drop extends Command {
   async run() {
     const stashes = this.db.getStashes()
     const choices = stashes.map(stash => ({
-      name: `${stash.name ?? stash.id} (${(new Date(stash.createdDate)).toLocaleString()})`,
+      name: `${getName(stash)} (${getDate(stash)})`,
       value: stash,
     }))
 
@@ -28,7 +29,7 @@ export default class Drop extends Command {
     }])
 
     stashesToDrop.forEach((stash: Stash) => {
-      cli.action.start(`Dropping ${stash.name ?? stash.id}`);
+      cli.action.start(`Dropping ${getName(stash)}`);
 
       fs.removeSync(path.join(this.config.dataDir, stash.id))
       this.db.deleteStash(stash.id)

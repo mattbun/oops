@@ -6,6 +6,7 @@ import * as path from 'path'
 import cli from 'cli-ux';
 
 import { Stash } from '../lib/types'
+import { getName, getDate } from '../lib/format'
 
 export default class Restore extends Command {
   static description = 'restore stashes'
@@ -23,7 +24,7 @@ export default class Restore extends Command {
 
     const stashes = this.db.getStashes()
     const choices = stashes.map(stash => ({
-      name: `${stash.name ?? stash.id} (${(new Date(stash.createdDate)).toLocaleString()})`,
+      name: `${getName(stash)} (${getDate(stash)})`,
       value: stash,
     }))
 
@@ -35,7 +36,7 @@ export default class Restore extends Command {
     }])
 
     stashesToRestore.forEach((stash: Stash) => {
-      console.log(`Restoring "${stash.name ?? stash.id}"...`);
+      console.log(`Restoring "${getName(stash)}"...`);
 
       // Check if any of the files exist before copying
       if (!force) {
