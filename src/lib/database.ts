@@ -21,26 +21,19 @@ export default class Database {
   }
 
   addStash(stash: {
-    id?: string;
+    id: string;
     name?: string;
     files: Array<StashFile>;
   }) {
     this.db.get('stashes').push({
-      id: stash.id ?? nanoid(),
-      createdDate: (new Date()).toISOString(),
       ...stash,
+      createdDate: (new Date()).toISOString(),
     }).write();
   }
 
   getStashes() {
     return this.db.get('stashes')
       .value();
-  }
-
-  deleteStashes(ids: Array<string>) {
-    this.db.get('stashes')
-      .remove(stash => ids.includes(stash.id))
-      .write();
   }
 
   deleteStash(id: string) {
