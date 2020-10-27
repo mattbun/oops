@@ -28,6 +28,11 @@ export default async function stashHandler(
     argv.push(...gitStatus.not_added)
   }
 
+  if (argv.length === 0) {
+    console.log('Nothing to stash')
+    return
+  }
+
   const id = db.createId()
   const files: Array<StashFile> = []
 
