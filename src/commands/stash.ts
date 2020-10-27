@@ -12,7 +12,18 @@ export default class Stash extends Command {
 
   static flags = {
     ...Command.flags,
+
     name: flags.string({ char: 'n', description: 'name for the stash' }),
+
+    modified: flags.boolean({
+      char: 'm',
+      description: 'stash all modified files according to git',
+    }),
+
+    untracked: flags.boolean({
+      char: 'u',
+      description: 'stash all untracked files according to git',
+    }),
   }
 
   static args = [{ name: 'file' }]
