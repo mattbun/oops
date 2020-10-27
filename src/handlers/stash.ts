@@ -18,17 +18,9 @@ export default async function stashHandler(
   },
   { argv, flags }: ParserOutput<Stash>
 ) {
-  const gitStatus = await simpleGit().status()
+  const pathsToStash = await gatherPaths(argv, flags)
 
-  if (flags.modified) {
-    argv.push(...gitStatus.modified)
-  }
-
-  if (flags.untracked) {
-    argv.push(...gitStatus.not_added)
-  }
-
-  if (argv.length === 0) {
+  if (pathsToStash.length === 0) {
     console.log('Nothing to stash')
     return
   }
@@ -59,4 +51,20 @@ export default async function stashHandler(
     name: flags.name,
     files,
   })
+}
+
+export async function gatherPaths(
+  argv: string[],
+  { modified, untracked }: { modified: boolean; untracked: boolean }
+) {
+  const result = [...argv]
+
+  if (modified || untracked) {
+    const gitStatus = await simpleGit().status()
+
+    if (modified) result.push(...gitStatus.modified)
+    if (untracked) result.push(...gitStatus.not_added)
+  }
+
+  return result
 }
