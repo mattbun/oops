@@ -19,7 +19,7 @@ $ npm install -g @mattbun/oops
 $ oops COMMAND
 running command...
 $ oops (-v|--version|version)
-@mattbun/oops/0.0.0 linux-x64 node-v14.4.0
+@mattbun/oops/0.0.3 linux-x64 node-v12.19.0
 $ oops --help [COMMAND]
 USAGE
   $ oops COMMAND
@@ -70,7 +70,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/drop.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/drop.ts)_
+_See code: [src/commands/drop.ts](https://github.com/mattbun/oops/blob/v0.0.3/src/commands/drop.ts)_
 
 ## `oops help [COMMAND]`
 
@@ -109,7 +109,7 @@ OPTIONS
   --sort=sort             property to sort by (prepend '-' for descending)
 ```
 
-_See code: [src/commands/list.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/list.ts)_
+_See code: [src/commands/list.ts](https://github.com/mattbun/oops/blob/v0.0.3/src/commands/list.ts)_
 
 ## `oops restore`
 
@@ -124,7 +124,7 @@ OPTIONS
   -h, --help   show CLI help
 ```
 
-_See code: [src/commands/restore.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/restore.ts)_
+_See code: [src/commands/restore.ts](https://github.com/mattbun/oops/blob/v0.0.3/src/commands/restore.ts)_
 
 ## `oops stash [FILE]`
 
@@ -136,11 +136,13 @@ USAGE
 
 OPTIONS
   -h, --help       show CLI help
+  -m, --modified   stash all modified files according to git
   -n, --name=name  name for the stash
+  -u, --untracked  stash all untracked files according to git
 
 ALIASES
   $ oops
 ```
 
-_See code: [src/commands/stash.ts](https://github.com/mattbun/oops/blob/v0.0.0/src/commands/stash.ts)_
+_See code: [src/commands/stash.ts](https://github.com/mattbun/oops/blob/v0.0.3/src/commands/stash.ts)_
 <!-- commandsstop -->
