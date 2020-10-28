@@ -12,7 +12,7 @@ describe('gatherPaths', () => {
   })
 
   it('returns modified files', async () => {
-    simpleGit.mockReturnValue({
+    (simpleGit as jest.Mock).mockReturnValue({
       status: async () => ({ modified: ['c', 'd'] }),
     })
 
@@ -22,7 +22,7 @@ describe('gatherPaths', () => {
   })
 
   it('returns untracked files', async () => {
-    simpleGit.mockReturnValue({
+    (simpleGit as jest.Mock).mockReturnValue({
       status: async () => ({ not_added: ['e', 'f'] }),
     })
 
@@ -32,7 +32,7 @@ describe('gatherPaths', () => {
   })
 
   it('combines paths from different sources', async () => {
-    simpleGit.mockReturnValue({
+    (simpleGit as jest.Mock).mockReturnValue({
       status: async () => ({
         modified: ['c', 'd'],
         not_added: ['e', 'f'],
